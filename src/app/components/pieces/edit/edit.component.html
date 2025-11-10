@@ -1,0 +1,127 @@
+<div class="main-content">
+    @if (loading) {
+        <div>Loading...</div>
+    }
+    @else {
+        <h1 class="page-title">
+            <div class="page-header">
+                <div>
+                    <a href="/pieces">All Pieces</a>&nbsp;
+                    <img src="assets/chevron-right.svg" class="chevron-right" alt=">">&nbsp;
+                    {{ (mode === 'add' ? 'Add' : piece.title)}}
+                </div>
+                @if (mode === 'edit') { <img (click)="delete()" src="assets/trash.svg" class="delete-icon" /> }
+            </div>
+            <div class="title-underline"></div>
+        </h1>
+        <div class="piece-wrap">
+            @if (!imgUrl) {
+            <div style="display: flex; flex-direction: column;">
+                <div (dragover)="onDragOver($event)" (dragleave)="onDragLeave()" (drop)="onDropSuccess($event)" [class]="'upload-area' + (draggingFile ? ' dragging-file' : '')">
+                    <img src="assets/upload.svg" class="upload-icon" alt="upload">
+                    <span>Drag a file</span>
+                </div>
+                <input id="img-upload" type="file" style="visibility: hidden;">
+            </div>
+            }
+            @else {
+            <div class="piece-img" [style]="`background-image: url(${imgUrl})`"></div>
+            }
+            <!-- <div class="piece-img" [style]="`background-image: url(${imgUrl})`"></div> -->
+            <div class="form-wrap">
+                <form [formGroup]="pieceForm">
+                    <table class="form-table">
+                        <tr>
+                            <td>Title<span class="required-field">*</span></td>
+                            <td class="form-field"><input formControlName="title" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td class="form-field"><input formControlName="date" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Media</td>
+                            <td class="form-field" style="flex-direction: column;">
+                                <ng-select
+                                    [multiple]="true"
+                                    [items]="media"
+                                    bindLabel="title"
+                                    bindValue="id"
+                                    formControlName="media"
+                                >
+                                </ng-select>
+                                <span style="font-size: 14px; margin-top: 4px; margin-left: auto;"><a href="/media/add" style="text-decoration: underline;">Add a new medium</a></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Collections</td>
+                            <td class="form-field" style="flex-direction: column;">
+                                <ng-select
+                                    [multiple]="true"
+                                    [items]="collections"
+                                    bindLabel="title"
+                                    bindValue="id"
+                                    formControlName="collections"
+                                >
+                                </ng-select>
+                                <span style="font-size: 14px; margin-top: 4px; margin-left: auto;"><a href="/collections/add" style="text-decoration: underline;">Add a new collection</a></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{ chooseParent ? 'Parent' : 'Children' }}</td>
+                            <td class="form-field" style="flex-direction: column;">
+                                @if (chooseParent) {
+                                <ng-select
+                                    [multiple]="false"
+                                    [items]="existingPieces"
+                                    bindLabel="title"
+                                    bindValue="id"
+                                    formControlName="parent"
+                                >
+                                </ng-select>
+                                <span class="parent-toggle"><span (click)="toggleParent()" style="text-decoration: underline;">Choose children</span></span>
+                                }
+                                @else {
+                                <ng-select
+                                    [multiple]="true"
+                                    [items]="existingPieces"
+                                    bindLabel="title"
+                                    bindValue="id"
+                                    formControlName="children"
+                                >
+                                </ng-select>
+                                {{children}}
+                                <span class="parent-toggle"><span (click)="toggleParent()" style="text-decoration: underline;">Choose parent</span></span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td class="form-field"><textarea formControlName="description" rows="4"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Active</td>
+                            <td><input formControlName="active" type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Use as Wallpaper</td>
+                            <td><input formControlName="useAsWallpaper" type="checkbox"></td>
+                        </tr>
+                        <!-- @if (uploadFile) { -->
+                        <tr>
+                            <td>File Name</td>
+                            <td class="form-field" style="flex-direction: column;">
+                                <input formControlName="filename" type="text">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+                <div class="button-wrap">
+                    <button (click)="submit()" [disabled]="!pieceForm.valid">Submit</button>
+                    <button><a href="/pieces">Cancel</a></button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

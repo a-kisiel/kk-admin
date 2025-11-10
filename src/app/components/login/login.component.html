@@ -1,0 +1,21 @@
+<div class="main-content">
+    <h2>Log In</h2>
+    <form>
+        <table class="form-table">
+            <tr>
+                <td>Username</td>
+                <td class="form-field">
+                    <input [formControl]="usernameControl" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td class="form-field">
+                    <input [formControl]="passwordControl" type="password">
+                </td>
+            </tr>
+        </table>
+
+        <button (click)="submit(); $event.preventDefault()" class="submit-button">Submit</button>
+    </form>
+</div>

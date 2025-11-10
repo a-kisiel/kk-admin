@@ -1,0 +1,16 @@
+.nav-wrap {
+    display: flex;
+    height:  40px;
+    color: white;
+    background-color: #224;
+    padding: 8px;
+
+    .nav-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+    }
+}

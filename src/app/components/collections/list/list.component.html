@@ -1,0 +1,21 @@
+<div class="main-content">
+    <h1 class="page-title">
+        <div class="page-header">
+            All Collections&nbsp;
+            <a href="collections/add" class="list-add">
+                <span>Add&nbsp;</span><img class="add-icon" src="assets/plus.svg" alt="">
+            </a>
+        </div>
+        <div class="title-underline"></div>
+    </h1>
+    @if (loading) {
+        <div>Loading...</div>
+    }
+    @else {
+        <div class="list-wrap">
+            @for (collection of collections; track collection.id) {
+                <a [href]="`collections/${collection.id}`" class="list-item">{{ collection.title }}</a>
+            }
+        </div>
+    }
+</div>

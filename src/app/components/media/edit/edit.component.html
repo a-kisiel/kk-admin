@@ -1,0 +1,34 @@
+<div class="main-content">
+    @if (loading) {
+        <div>Loading...</div>
+    }
+    @else {
+        <h1 class="page-title">
+            <div class="page-header">
+                <div>
+                    <a href="/media">All Media</a>&nbsp;
+                    <img src="assets/chevron-right.svg" class="chevron-right" alt=">">&nbsp;
+                    {{ (mode === 'edit' ? medium.title : 'Add') }}
+                </div>
+                @if (mode === 'edit') {
+                <img (click)="delete()" src="assets/trash.svg" class="delete-icon" />
+                }
+            </div>
+            <div class="title-underline"></div>
+        </h1>
+
+        <form [formGroup]="mediumForm">
+            <table class="form-table">
+                <tr>
+                    <td>Title<span class="required-field">*</span></td>
+                    <td class="form-field"><input formControlName="title" type="text"></td>
+                </tr>
+            </table>
+            
+            <div class="button-wrap">
+                <button (click)="submit()" [disabled]="!mediumForm.valid">Submit</button>
+                <button><a href="/media">Cancel</a></button>
+            </div>
+        </form>        
+    }
+</div>

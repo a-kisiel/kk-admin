@@ -1,0 +1,21 @@
+.piece-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .piece-img {
+        width: 400px; height: 500px;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+    }
+
+    .form-wrap {
+        display: flex; flex-direction: column;
+        margin-left: 20px;
+
+        .parent-toggle {
+            cursor: pointer;
+            margin: 4px 0 0 auto;
+        }
+    }
+}

@@ -1,0 +1,54 @@
+<div class="main-content">
+    @if (loading) {
+        <div>Loading...</div>
+    }
+    @else {
+        <h1 class="page-title">
+            <div class="page-header">
+                <div>
+                    <a href="/collections">All Collections</a>&nbsp;
+                    <img src="assets/chevron-right.svg" class="chevron-right" alt="">&nbsp;
+                    {{ (mode === 'edit' ? collection.title : 'Add') }}
+                </div>
+                @if (mode === 'edit') {
+                <img (click)="delete()" src="assets/trash.svg" class="delete-icon" />
+                }
+            </div>
+            <div class="title-underline"></div>
+        </h1>
+
+        <form [formGroup]="collectionForm">
+            <table class="form-table">
+                <tr>
+                    <td>Title<span class="required-field">*</span></td>
+                    <td class="form-field"><input formControlName="title" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td class="form-field"><input formControlName="location" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Start Date<span class="required-field">*</span></td>
+                    <td class="form-field"><input formControlName="start_date" type="text"></td>
+                </tr>
+                <tr>
+                    <td>End Date</td>
+                    <td class="form-field"><input formControlName="end_date" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td class="form-field"><input formControlName="description" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Active</td>
+                    <td><input formControlName="active" type="checkbox"></td>
+                </tr>
+            </table>
+        </form>     
+        
+        <div class="button-wrap">
+            <button (click)="submit()" [disabled]="!collectionForm.valid">Submit</button>
+            <button><a href="/collections">Cancel</a></button>
+        </div>
+    }
+</div>

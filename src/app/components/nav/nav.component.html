@@ -1,0 +1,10 @@
+<div class="nav-wrap">
+    <div class="nav-content">
+        <div><a href="/">Dashboard</a></div>
+        @if (isLoggedIn) {
+            <div (click)="auth.logout()" class="button-div">
+                Log Out
+            </div>
+        }
+    </div>
+</div>

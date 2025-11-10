@@ -1,0 +1,25 @@
+<div class="main-content">
+    <h1 class="page-title">
+        <div class="page-header">
+            All Pieces&nbsp;
+            <a href="pieces/add" class="list-add">
+                <span>Add&nbsp;</span><img class="add-icon" src="assets/plus.svg" alt="">
+            </a>
+        </div>
+        <div class="title-underline"></div>
+    </h1>
+    @if (loading) {
+        <div>Loading...</div>
+    }
+    @else {
+        <div class="list-wrap">
+            @for (piece of pieces; track piece.id) {
+                <a [href]="`/pieces/${piece.id}`" class="list-item">
+                    <div>{{ piece.title }}</div>
+                    <div class="piece-preview" [style]="`background-image: url(${piece.url})`"></div>
+                </a>
+            }
+        </div>
+        
+    }
+</div>
