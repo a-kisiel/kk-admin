@@ -135,13 +135,13 @@ export class EditPieceComponent {
       title: ['', Validators.required],
       filename: [''],
       date: [''],
-      media: [[[]]],
-      collections: [[[]]],
+      media: [[]],
+      collections: [[]],
       parent: [],
-      children: [[[]]],
+      children: [[]],
       description: [''],
       active: [false],
-      useAsWallpaper: [false]
+      use_as_wallpaper: [false]
     });
 
     if (this.id) {
@@ -161,7 +161,7 @@ export class EditPieceComponent {
             description: this.piece.description?.toString(),
             parent: this.piece.parent,
             active: !!this.piece.active,
-            useAsWallpaper: !!this.piece.use_as_wallpaper
+            use_as_wallpaper: !!this.piece.use_as_wallpaper
           });
 
           if (this.piece.media instanceof Array) {          
