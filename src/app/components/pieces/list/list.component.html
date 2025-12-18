@@ -14,9 +14,9 @@
     @else {
         <div class="list-wrap">
             @for (piece of pieces; track piece.id) {
-                <a [href]="`/pieces/${piece.id}`" class="list-item">
-                    <div>{{ piece.title }}</div>
-                    <div class="piece-preview" [style]="`background-image: url(${piece.url})`"></div>
+                <a [href]="`/pieces/${piece.id}`" class="list-item" [style]="`background-image: url(${piece.url})`">
+                    <!-- <div class="list-item-mask"></div> -->
+                    <div class="piece-title">{{ piece.title }}</div>
                 </a>
             }
         </div>
