@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { Medium } from '../models/medium.model';
 import { Json } from './json';
 
-const baseUrl = 'http://localhost:8000/api/media';
+// const baseUrl = 'http://localhost:8000/api/media';
+const baseUrl = 'https://db.katiekisiel.com/api/media';
 
 @Injectable({
   providedIn: 'root'

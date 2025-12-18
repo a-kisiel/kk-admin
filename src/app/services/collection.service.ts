@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Collection } from '../models/collection.model';
 
-const baseUrl = 'http://localhost:8000/api/collections';
+// const baseUrl = 'http://localhost:8000/api/collections';
+const baseUrl = 'https://db.katiekisiel.com/api/collections';
 
 @Injectable({
   providedIn: 'root'

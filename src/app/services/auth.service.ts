@@ -3,16 +3,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'
-import { Observable } from 'rxjs';
  
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public baseUrl = 'http://localhost:8000';
+  // public baseUrl = 'http://localhost:8000';
+  public baseUrl = 'https://db.katiekisiel.com';
 
-  private httpOptions: any;
   public token: string = '';
   public token_expires: Date = new Date();
 
